@@ -42,7 +42,7 @@ data:
                     host: 0.0.0.0
                     port: 8888
         logs:
-          level: debug
+          level: {{ .Values.collector.logLevel | default "info" }}
     extensions:
       {{- if .Values.collector.sampling.type }}
       remote_sampling:
@@ -142,7 +142,7 @@ data:
           {{- else if eq .Values.jaeger.storage.type "remotegRPC" }}
           remote_grpc:
             grpc:
-              endpoint: {{- .Values.remotegRPC.url }}
+              endpoint: {{- .Values.remotegRPC.endpoint }}
               timeout: {{- .Values.remotegRPC.timeout }}
               {{- if .Values.remotegRPC.tls.enabled }}
               tls:
@@ -306,7 +306,7 @@ data:
           allowed_origins: {{ .Values.collector.zipkin.cors.allowedOrigins }}
         {{- end }}
         {{- if .Values.collector.zipkin.cors.allowedHeaders }}
-          allowed_headers: {{ .Values.collector.zipkin.allowedHeaders }}
+          allowed_headers: {{ .Values.collector.zipkin.cors.allowedHeaders }}
         {{- end }}
         {{- end }}
         tls:
