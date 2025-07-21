@@ -2177,11 +2177,11 @@ integrationTests:
       memory: 256Mi
       cpu: 300m
   statusWriting:
-    enabled: false
+    enabled: true
     isShortStatusMessage: true
     onlyIntegrationTests: true
     resourceToSetStatus: "jaeger-collector"
-    customResourcePath: "apps/v1/namespaces/jaeger/deployments/jaeger-integration-tests-runner"
+    customResourcePath: "apps/v1/jaeger/deployments/jaeger-collector"
   service:
     name: jaeger-integration-tests-runner
   serviceAccount:
