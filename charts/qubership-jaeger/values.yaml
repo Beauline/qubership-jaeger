@@ -2180,7 +2180,8 @@ integrationTests:
     enabled: false
     isShortStatusMessage: true
     onlyIntegrationTests: true
-    customResourcePath: "apps/v1/jaeger/deployments/jaeger-integration-tests-runner"
+    resourceToSetStatus: "jaeger-collector"
+    customResourcePath: "apps/v1/namespaces/jaeger/deployments/jaeger-integration-tests-runner"
   service:
     name: jaeger-integration-tests-runner
   serviceAccount:

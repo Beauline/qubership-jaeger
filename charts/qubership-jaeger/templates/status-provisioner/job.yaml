@@ -58,7 +58,8 @@ spec:
           - name: TEMP
             value: /opt/robot/target
           - name: RESOURCE_TO_SET_STATUS
-            value: "apps v1 deployments jaeger-collector"
+            value: {{ printf "apps v1 deployments %s" .Values.integrationTests.statusWriting.resourceToSetStatus }}
+            "apps v1 deployments jaeger-collector"
           - name: CONDITION_REASON
             value: "IntegrationTestsExecutionStatus"
           - name: MONITORED_RESOURCES
@@ -67,13 +68,13 @@ spec:
             value: {{ .Values.integrationTests.statusWriting.enabled | quote }}
           {{- if and .Values.integrationTests.install .Values.integrationTests.statusWriting.enabled }}
           - name: INTEGRATION_TESTS_RESOURCE
-            value: "apps v1 deployments jaeger-collector"
+            value: {{ printf "apps v1 deployments %s" .Values.integrationTests.service.name }}
           - name: ONLY_INTEGRATION_TESTS
             value: {{ .Values.integrationTests.statusWriting.onlyIntegrationTests | quote }}
           - name: IS_SHORT_STATUS_MESSAGE
             value: {{ .Values.integrationTests.statusWriting.isShortStatusMessage | quote }}
           - name: STATUS_CUSTOM_RESOURCE_PATH
-            value: "apps/v1/deployments/jaeger-collector"
+            value: {{ toYaml .Values.integrationTests.statusWriting.customResourcePath }}
           - name: INTEGRATION_TESTS_CONDITION_REASON
             value: "IntegrationTestsExecutionStatus"
           - name: INTEGRATION_TESTS_SUCCESSFUL_CONDITION_TYPE
