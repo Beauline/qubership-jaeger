@@ -67,7 +67,7 @@ spec:
             value: {{ .Values.integrationTests.statusWriting.enabled | quote }}
           {{- if and .Values.integrationTests.install .Values.integrationTests.statusWriting.enabled }}
           - name: INTEGRATION_TESTS_RESOURCE
-            value: {{ printf "apps v1 deployments %s" .Values.integrationTests.service.name }}
+            value: "apps v1 deployments jaeger-collector"
           - name: ONLY_INTEGRATION_TESTS
             value: {{ .Values.integrationTests.statusWriting.onlyIntegrationTests | quote }}
           - name: IS_SHORT_STATUS_MESSAGE
