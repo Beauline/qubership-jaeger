@@ -59,7 +59,6 @@ spec:
             value: /opt/robot/target
           - name: RESOURCE_TO_SET_STATUS
             value: {{ printf "apps v1 deployments %s" .Values.integrationTests.statusWriting.resourceToSetStatus }}
-            "apps v1 deployments jaeger-collector"
           - name: CONDITION_REASON
             value: "IntegrationTestsExecutionStatus"
           - name: MONITORED_RESOURCES
