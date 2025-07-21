@@ -73,7 +73,7 @@ spec:
           - name: IS_SHORT_STATUS_MESSAGE
             value: {{ .Values.integrationTests.statusWriting.isShortStatusMessage | quote }}
           - name: STATUS_CUSTOM_RESOURCE_PATH
-            value: {{ toYaml .Values.integrationTests.statusWriting.customResourcePath }}
+            value: "apps/v1/deployments/jaeger-collector"
           - name: INTEGRATION_TESTS_CONDITION_REASON
             value: "IntegrationTestsExecutionStatus"
           - name: INTEGRATION_TESTS_SUCCESSFUL_CONDITION_TYPE
